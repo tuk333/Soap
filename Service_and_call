@@ -1,0 +1,17 @@
+//Service Soap
+
+private DatabaseEntities _database = new DatabaseEntities();
+    [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
+    public List<BIOG_VIEW>  GetBIOG(string id)
+    {
+        
+            return this._database.BIOG_VIEW.Where(m => m.BIOG_CID.Equals(id)).ToList();
+      
+    }
+    
+  // Client Call
+     ServiceReference1.ASoapClient client = new ServiceReference1.ASoapClient();
+     client.GetBIOG(securedtoken,5)        
+
+    
